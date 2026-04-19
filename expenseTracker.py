@@ -58,3 +58,34 @@ def reset_expenses():
         print("All expenses cleared!")
     else:
         print("Reset cancelled.")
+
+def main():
+    global data
+    data = load_expenses()     
+
+    while True:                 
+        print("\n--- Expense Tracker ---")
+        print("1. Add expense")
+        print("2. View expenses")
+        print("3. Summary")
+        print("4. Quit")
+        print("5. Reset")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            add_expense()
+            save_expense() 
+        elif choice == "2":
+            view_expenses()
+        elif choice == "3":
+            summary()
+        elif choice == "4":
+            print("Bye!")
+            break  
+        elif choice == "5":
+            reset_expenses()          
+        else:
+            print("Invalid choice, try again!")
+
+main()
