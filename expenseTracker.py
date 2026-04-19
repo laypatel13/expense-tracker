@@ -28,7 +28,8 @@ def add_expense():
 
 
 def save_expense():
-    pass
+    with open("expenses.json", "w") as f:
+        json.dump(data, f)
 
 def view_expenses():
     pass
