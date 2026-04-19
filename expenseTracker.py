@@ -34,7 +34,7 @@ def save_expense():
 
 def view_expenses():
     for expense in data:
-        print(expense["date"] | expense["category"] | expense["amount"])
+        print(expense["date"], "|", expense["category"], "|",  expense["amount"])
 
 def summary():
     for expense in data:
