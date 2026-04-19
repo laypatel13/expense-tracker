@@ -48,3 +48,13 @@ def summary():
         print(category, "→", total)
 
     print("Total →", sum(totals.values()))
+
+def reset_expenses():
+    global data
+    confirm = input("Are you sure you want to reset all expenses? (yes/no): ")
+    if confirm.lower() == "yes":
+        data = []
+        save_expense()
+        print("All expenses cleared!")
+    else:
+        print("Reset cancelled.")
