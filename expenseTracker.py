@@ -2,6 +2,7 @@ import json
 import os
 
 data = []
+totals = {}
 
 def load_expenses():
     if os.path.exists("expenses.json"):
@@ -34,3 +35,16 @@ def save_expense():
 def view_expenses():
     for expense in data:
         print(expense["date"] | expense["category"] | expense["amount"])
+
+def summary():
+    for expense in data:
+        category = expense["category"]
+        amount = expense["amount"]
+        if category in totals:
+            totals[category] += amount   
+        else:
+            totals[category] = amount    
+    for category, total in totals.items():
+        print(category, "→", total)
+
+    print("Total →", sum(totals.values()))
