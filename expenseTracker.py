@@ -32,4 +32,5 @@ def save_expense():
         json.dump(data, f)
 
 def view_expenses():
-    pass
+    for expense in data:
+        print(expense["date"] | expense["category"] | expense["amount"])
