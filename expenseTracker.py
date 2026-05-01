@@ -1,8 +1,8 @@
 import json
 import os
 from colorama import init, Fore, Style
+from tabulate import tabulate
 
-# Initialize colorama
 init(autoreset=True)
 
 data = []
@@ -42,8 +42,15 @@ def view_expenses():
         print(Fore.YELLOW + "No expenses recorded yet." + Style.RESET_ALL)
         return
     print(Fore.MAGENTA + Style.BRIGHT + "\n--- Your Expenses ---" + Style.RESET_ALL)
+    table_data = []
     for expense in data:
-        print(Fore.GREEN + f"{expense['date']}" + Style.RESET_ALL + " | " + Fore.YELLOW + f"{expense['category']}" + Style.RESET_ALL + " | " + Fore.CYAN + f"${expense['amount']}" + Style.RESET_ALL)
+        table_data.append([
+            Fore.GREEN + expense['date'] + Style.RESET_ALL,
+            Fore.YELLOW + expense['category'] + Style.RESET_ALL,
+            Fore.CYAN + f"{expense['amount']}" + Style.RESET_ALL
+        ])
+    headers = [Style.BRIGHT + "Date" + Style.RESET_ALL, Style.BRIGHT + "Category" + Style.RESET_ALL, Style.BRIGHT + "Amount" + Style.RESET_ALL]
+    print(tabulate(table_data, headers=headers, tablefmt="fancy_grid", disable_numparse=True))
 
 def summary():
     if not data:
@@ -60,10 +67,20 @@ def summary():
             totals[category] = amount    
             
     print(Fore.MAGENTA + Style.BRIGHT + "\n--- Expense Summary ---" + Style.RESET_ALL)
+    table_data = []
     for category, total in totals.items():
-        print(Fore.YELLOW + f"{category}" + Style.RESET_ALL + " → " + Fore.CYAN + f"${total}" + Style.RESET_ALL)
+        table_data.append([
+            Fore.YELLOW + f"{category}" + Style.RESET_ALL,
+            Fore.CYAN + f"{total}" + Style.RESET_ALL
+        ])
 
-    print(Fore.GREEN + Style.BRIGHT + f"Total → {sum(totals.values())}" + Style.RESET_ALL)
+    table_data.append([
+        Fore.GREEN + Style.BRIGHT + "Total" + Style.RESET_ALL,
+        Fore.GREEN + Style.BRIGHT + f"{sum(totals.values())}" + Style.RESET_ALL
+    ])
+
+    headers = [Style.BRIGHT + "Category" + Style.RESET_ALL, Style.BRIGHT + "Total Amount" + Style.RESET_ALL]
+    print(tabulate(table_data, headers=headers, tablefmt="fancy_grid", disable_numparse=True))
 
 def reset_expenses():
     global data
@@ -81,8 +98,8 @@ def main():
 
     while True:                 
         print(Fore.BLUE + Style.BRIGHT + "\n--- Expense Tracker ---" + Style.RESET_ALL)
-        print(Fore.YELLOW + "1." + Style.RESET_ALL + " Add Expense")
-        print(Fore.YELLOW + "2." + Style.RESET_ALL + " View Expenses")
+        print(Fore.YELLOW + "1." + Style.RESET_ALL + " Add-Expense")
+        print(Fore.YELLOW + "2." + Style.RESET_ALL + " View-Expenses")
         print(Fore.YELLOW + "3." + Style.RESET_ALL + " Summary")
         print(Fore.YELLOW + "4." + Style.RESET_ALL + " Quit")
         print(Fore.YELLOW + "5." + Style.RESET_ALL + " Reset")
