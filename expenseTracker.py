@@ -1,5 +1,9 @@
 import json
 import os
+from colorama import init, Fore, Style
+
+# Initialize colorama
+init(autoreset=True)
 
 data = []
 totals = {}
@@ -15,17 +19,18 @@ def load_expenses():
 
 def add_expense():
     while True:
-        amount_input = input("Enter amount (or 'quit' to finish): ")
+        amount_input = input(Fore.CYAN + "Enter amount (or 'quit' to finish): " + Style.RESET_ALL)
         if amount_input.lower() == 'quit':
             break
         try:
             amount = int(amount_input)
-            category = input("Enter category: ")
-            date = input("Enter date (YYYY-MM-DD): ")
+            category = input(Fore.CYAN + "Enter category: " + Style.RESET_ALL)
+            date = input(Fore.CYAN + "Enter date (YYYY-MM-DD): " + Style.RESET_ALL)
             new_entry = {"amount": amount, "category": category, "date": date,}
             data.append(new_entry)
+            print(Fore.GREEN + "Expense added successfully!\n" + Style.RESET_ALL)
         except ValueError:
-            print("Invalid amount. Please enter a number.")
+            print(Fore.RED + "Invalid amount. Please enter a number.\n" + Style.RESET_ALL)
 
 
 def save_expense():
@@ -33,10 +38,19 @@ def save_expense():
         json.dump(data, f)
 
 def view_expenses():
+    if not data:
+        print(Fore.YELLOW + "No expenses recorded yet." + Style.RESET_ALL)
+        return
+    print(Fore.MAGENTA + Style.BRIGHT + "\n--- Your Expenses ---" + Style.RESET_ALL)
     for expense in data:
-        print(expense["date"], "|", expense["category"], "|",  expense["amount"])
+        print(Fore.GREEN + f"{expense['date']}" + Style.RESET_ALL + " | " + Fore.YELLOW + f"{expense['category']}" + Style.RESET_ALL + " | " + Fore.CYAN + f"${expense['amount']}" + Style.RESET_ALL)
 
 def summary():
+    if not data:
+        print(Fore.YELLOW + "No expenses to summarize." + Style.RESET_ALL)
+        return
+        
+    totals.clear()
     for expense in data:
         category = expense["category"]
         amount = expense["amount"]
@@ -44,34 +58,36 @@ def summary():
             totals[category] += amount   
         else:
             totals[category] = amount    
+            
+    print(Fore.MAGENTA + Style.BRIGHT + "\n--- Expense Summary ---" + Style.RESET_ALL)
     for category, total in totals.items():
-        print(category, "→", total)
+        print(Fore.YELLOW + f"{category}" + Style.RESET_ALL + " → " + Fore.CYAN + f"${total}" + Style.RESET_ALL)
 
-    print("Total →", sum(totals.values()))
+    print(Fore.GREEN + Style.BRIGHT + f"Total → {sum(totals.values())}" + Style.RESET_ALL)
 
 def reset_expenses():
     global data
-    confirm = input("Are you sure you want to reset all expenses? (yes/no): ")
+    confirm = input(Fore.RED + Style.BRIGHT + "Are you sure you want to reset all expenses? (yes/no): " + Style.RESET_ALL)
     if confirm.lower() == "yes":
         data = []
         save_expense()
-        print("All expenses cleared!")
+        print(Fore.GREEN + "All expenses cleared!" + Style.RESET_ALL)
     else:
-        print("Reset cancelled.")
+        print(Fore.YELLOW + "Reset cancelled." + Style.RESET_ALL)
 
 def main():
     global data
     data = load_expenses()     
 
     while True:                 
-        print("\n--- Expense Tracker ---")
-        print("1. Add expense")
-        print("2. View expenses")
-        print("3. Summary")
-        print("4. Quit")
-        print("5. Reset")
+        print(Fore.BLUE + Style.BRIGHT + "\n--- Expense Tracker ---" + Style.RESET_ALL)
+        print(Fore.YELLOW + "1." + Style.RESET_ALL + " Add Expense")
+        print(Fore.YELLOW + "2." + Style.RESET_ALL + " View Expenses")
+        print(Fore.YELLOW + "3." + Style.RESET_ALL + " Summary")
+        print(Fore.YELLOW + "4." + Style.RESET_ALL + " Quit")
+        print(Fore.YELLOW + "5." + Style.RESET_ALL + " Reset")
 
-        choice = input("Enter choice: ")
+        choice = input(Fore.CYAN + "\nEnter choice: " + Style.RESET_ALL)
 
         if choice == "1":
             add_expense()
@@ -81,11 +97,12 @@ def main():
         elif choice == "3":
             summary()
         elif choice == "4":
-            print("Bye!")
+            print(Fore.MAGENTA + "Bye!" + Style.RESET_ALL)
             break  
         elif choice == "5":
             reset_expenses()          
         else:
-            print("Invalid choice, try again!")
+            print(Fore.RED + "Invalid choice, try again!" + Style.RESET_ALL)
 
-main()
+if __name__ == "__main__":
+    main()
