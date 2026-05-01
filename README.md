@@ -1,17 +1,28 @@
 # 💰 Expense Tracker - CLI
 
 A simple command-line Expense Tracker built using Python.
-This project helps you record, view, and summarize your daily expenses.
+This project helps you record, view, and summarize your daily expenses with a colorful and neatly formatted tabular interface.
 
 ---
 
 ## ✨ Features
 
 * Add expenses with amount, category, and date
-* View all recorded expenses
+* View all recorded expenses in a tabular format
 * Get category-wise summary and total spending
 * Save data in a JSON file (`expenses.json`)
 * Reset all expenses when needed
+* Colorful CLI output for better readability
+
+---
+
+## 🛠️ Prerequisites
+
+You need to install the required Python libraries before running the script:
+
+```bash
+pip install colorama tabulate
+```
 
 ---
 
@@ -30,9 +41,9 @@ python3 expenseTracker.py  # Mac/Linux
 
 ## 📂 Project Structure
 
-```
-project/
+```text
+expense-tracker/
 │── expenseTracker.py
 │── expenses.json
-│── README.md
+└── README.md
 ```
