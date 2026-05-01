@@ -98,11 +98,11 @@ def main():
 
     while True:                 
         print(Fore.BLUE + Style.BRIGHT + "\n--- Expense Tracker ---" + Style.RESET_ALL)
-        print(Fore.YELLOW + "1." + Style.RESET_ALL + " Add-Expense")
-        print(Fore.YELLOW + "2." + Style.RESET_ALL + " View-Expenses")
-        print(Fore.YELLOW + "3." + Style.RESET_ALL + " Summary")
-        print(Fore.YELLOW + "4." + Style.RESET_ALL + " Quit")
-        print(Fore.YELLOW + "5." + Style.RESET_ALL + " Reset")
+        print(Fore.YELLOW + "1. add-expense" + Style.RESET_ALL)
+        print(Fore.YELLOW + "2. view-expenses" + Style.RESET_ALL)
+        print(Fore.YELLOW + "3. summary" + Style.RESET_ALL)
+        print(Fore.YELLOW + "4. quit" + Style.RESET_ALL)
+        print(Fore.YELLOW + "5. reset" + Style.RESET_ALL)
 
         choice = input(Fore.CYAN + "\nEnter choice: " + Style.RESET_ALL)
 
