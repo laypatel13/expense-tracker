@@ -21,7 +21,9 @@ This project helps you record, view, and summarize your daily expenses with a co
 You need to install the required Python libraries before running the script:
 
 ```bash
-pip install colorama tabulate
+pip install -r requirements.txt
+# OR
+pip install colorama tabulate pytest
 ```
 
 ---
@@ -39,11 +41,23 @@ python3 expenseTracker.py  # Mac/Linux
 
 ---
 
+## 🧪 Running Tests
+
+This project includes a test suite using `pytest`. To run the tests, execute:
+
+```bash
+pytest test-expenseTracker.py
+```
+
+---
+
 ## 📂 Project Structure
 
 ```text
 expense-tracker/
 │── expenseTracker.py
+│── test_expenseTracker.py
 │── expenses.json
+│── requirements.txt
 └── README.md
 ```

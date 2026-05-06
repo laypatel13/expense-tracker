@@ -1,1 +1,14 @@
 expenses.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+.env/
