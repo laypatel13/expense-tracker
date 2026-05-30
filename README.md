@@ -7,46 +7,50 @@ This project helps you record, view, and summarize your daily expenses with a co
 
 ## ✨ Features
 
-* Add expenses with amount, category, and date
-* View all recorded expenses in a tabular format
-* Get category-wise summary and total spending
-* Save data in a JSON file (`expenses.json`)
-* Reset all expenses when needed
-* Colorful CLI output for better readability
+- Add expenses with amount, category, and date
+- View all recorded expenses in a tabular format
+- Get category-wise summary and total spending
+- Save data in a JSON file (`expenses.json`)
+- Reset all expenses when needed
+- Colorful CLI output for better readability
 
 ---
 
-## 🛠️ Prerequisites
-
-You need to install the required Python libraries before running the script:
+## 📦 Install via pip
 
 ```bash
-pip install -r requirements.txt
-# OR
-pip install colorama tabulate pytest
+pip install lay-expense-tracker
+```
+
+Then run it from anywhere in your terminal:
+
+```bash
+expense-tracker
 ```
 
 ---
 
-## ▶️ How to Run
-
-1. Clone or download this project
-2. Open terminal in the project folder
-3. Run the script:
+## 🛠️ Install from source
 
 ```bash
-python expenseTracker.py   # Windows
-python3 expenseTracker.py  # Mac/Linux
+git clone https://github.com/laypatel13/expense-tracker.git
+cd expense-tracker
+pip install -r requirements.txt
+pip install -e .
+```
+
+Then run:
+
+```bash
+expense-tracker
 ```
 
 ---
 
 ## 🧪 Running Tests
 
-This project includes a test suite using `pytest`. To run the tests, execute:
-
 ```bash
-pytest test-expenseTracker.py
+pytest test_expense_tracker.py -v
 ```
 
 ---
@@ -55,9 +59,19 @@ pytest test-expenseTracker.py
 
 ```text
 expense-tracker/
-│── expenseTracker.py
-│── test_expenseTracker.py
-│── expenses.json
-│── requirements.txt
+├── expense_tracker/
+│   ├── __init__.py
+│   └── main.py
+├── test_expense_tracker.py
+├── pyproject.toml
+├── requirements.txt
 └── README.md
 ```
+
+---
+
+## 🧰 Built With
+
+- [colorama](https://pypi.org/project/colorama/) — colored terminal output
+- [tabulate](https://pypi.org/project/tabulate/) — formatted table display
+- [pytest](https://pypi.org/project/pytest/) — testing
