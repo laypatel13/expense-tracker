@@ -63,5 +63,5 @@ expense-tracker/
 
 ## 🧰 Built With
 
-- [colorama](https://pypi.org/project/colorama/) — colored terminal output
-- [tabulate](https://pypi.org/project/tabulate/) — formatted table display
+- [Colorama](https://pypi.org/project/colorama/) — Used for colored terminal output.
+- [Tabulate](https://pypi.org/project/tabulate/) — Used for formatted table display.
