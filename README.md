@@ -47,14 +47,6 @@ expense-tracker
 
 ---
 
-## 🧪 Running Tests
-
-```bash
-pytest test_expense_tracker.py -v
-```
-
----
-
 ## 📂 Project Structure
 
 ```text
@@ -62,7 +54,6 @@ expense-tracker/
 ├── expense_tracker/
 │   ├── __init__.py
 │   └── main.py
-├── test_expense_tracker.py
 ├── pyproject.toml
 ├── requirements.txt
 └── README.md
@@ -74,4 +65,3 @@ expense-tracker/
 
 - [colorama](https://pypi.org/project/colorama/) — colored terminal output
 - [tabulate](https://pypi.org/project/tabulate/) — formatted table display
-- [pytest](https://pypi.org/project/pytest/) — testing
