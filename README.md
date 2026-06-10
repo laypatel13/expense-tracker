@@ -19,7 +19,7 @@ This project helps you record, view, and summarize your daily expenses with a co
 ## 📦 Install via pip
 
 ```bash
-pip install lay-expense-tracker
+pip install laypatel13-expense-tracker
 ```
 
 Then run it from anywhere in your terminal:
@@ -63,5 +63,5 @@ expense-tracker/
 
 ## 🧰 Built With
 
-- [Colorama](https://pypi.org/project/colorama/) — Used for colored terminal output.
-- [Tabulate](https://pypi.org/project/tabulate/) — Used for formatted table display.
+- Used [Colorama](https://pypi.org/project/colorama/) for colored terminal output.
+- Used [Tabulate](https://pypi.org/project/tabulate/) for formatted table display.
