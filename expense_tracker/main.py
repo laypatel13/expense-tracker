@@ -56,7 +56,7 @@ def view_expenses():
             Fore.WHITE + Style.BRIGHT + expense['category'] + Style.RESET_ALL,
             Fore.WHITE + Style.BRIGHT + f"{expense['amount']}" + Style.RESET_ALL
         ])
-    headers = [Style.BRIGHT + "DateOfExpense" + Style.RESET_ALL, Style.BRIGHT + "CategoryOfExpense" + Style.RESET_ALL, Style.BRIGHT + "AmountOfExpense" + Style.RESET_ALL]
+    headers = [Style.BRIGHT + "Date" + Style.RESET_ALL, Style.BRIGHT + "Category" + Style.RESET_ALL, Style.BRIGHT + "Amount" + Style.RESET_ALL]
     print(tabulate(table_data, headers=headers, tablefmt="pretty", disable_numparse=True))
 
 def summary():
@@ -86,7 +86,7 @@ def summary():
         Fore.WHITE + Style.NORMAL + f"{sum(totals.values())}" + Style.RESET_ALL
     ])
 
-    headers = [Style.BRIGHT + "CategoryOfExpense" + Style.RESET_ALL, Style.BRIGHT + "Total-AmountOfExpense" + Style.RESET_ALL]
+    headers = [Style.BRIGHT + "Category" + Style.RESET_ALL, Style.BRIGHT + "Total Amount" + Style.RESET_ALL]
     print(tabulate(table_data, headers=headers, tablefmt="pretty", disable_numparse=True))
 
 def reset_expenses():
